@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloController {
     @GetMapping
     public String sayHello() {
-        return "Hello, Jenkins!! 자동 배포 테스트2222";
+        return "자동 배포 하고싶다..";
     }
 }
