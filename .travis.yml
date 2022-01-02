@@ -24,7 +24,7 @@ before_deploy:
   - cp build/libs/*.jar before-deploy/
   - cd before-deploy && zip -r before-deploy *
   - cd ../ && mkdir -p deploy
-  - mv before-deploy/before-deploy.zip deploy/aws-test.zip
+  - mv before-deploy/before-deploy.zip deploy/springboot_ci_cd.zip
 
 deploy: # (5)
   - provider: s3
@@ -40,7 +40,7 @@ deploy: # (5)
       access_key_id: $AWS_ACCESS_KEY # travis repo settings에 설정된 값
       secret_access_key: $AWS_SECRET_KEY # travis repo settings에 설정된 값
       bucket: s3travis # 버킷명
-      key: aws-test.zip # 빌드 파일을 압축해서 전달
+      key: springboot_ci_cd.zip # 빌드 파일을 압축해서 전달
       bundle_type: zip # 압축 확장자
       application: travis # codeDeploy 애플리케이션 명
       deployment_group: travis-ci # 배포 그룹 명
