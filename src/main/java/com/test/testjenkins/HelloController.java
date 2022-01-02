@@ -13,23 +13,23 @@ import java.util.List;
 public class HelloController {
     private final Environment env;
 
+    @GetMapping("/profile")
+    public String profile(){
+        List<String> profiles = Arrays.asList(env.getActiveProfiles());
+        List<String> realProfiles = Arrays.asList("real1", "real2");
 
-    @GetMapping("/")
-    public String checkPort() {
-        List<String> portCheck = Arrays.asList(env.getActiveProfiles());
-        List<String> realPortChecks = Arrays.asList("real1", "real2");
-        String defaultPortCheck = portCheck.isEmpty() ? "default" : portCheck.get(0);
+        String defaultProfile = profiles.isEmpty() ? "default" : profiles.get(0);
 
-        return portCheck.stream()
-                .filter(realPortChecks::contains)
+        return profiles.stream()
+                .filter(realProfiles::contains)
                 .findAny()
-                .orElse(defaultPortCheck);
+                .orElse(defaultProfile);
     }
 
 
-    @GetMapping("/hello")
+    @GetMapping("/")
     public String sayHello() {
-        return "자동 배포 진짜 성공...!!!!";
+        return "travis + s3 + codeDeploy + nginx";
     }
 
 }

@@ -13,22 +13,22 @@ permissions:
     group: ubuntu
 
 hooks:
-  ApplicationStart:
-    - location: deploy.sh
+#  ApplicationStart:
+#    - location: deploy.sh
+#      timeout: 90
+#      runas: ubuntu
+##
+  AfterInstall:
+    - location: stop.sh
       timeout: 90
       runas: ubuntu
-#
-#  AfterInstall:
-#    - location: stop.sh
-#      timeout: 90
-#      runas: root
-#
-#  ApplicationStart:
-#    - location: start.sh
-#      timeout: 90
-#      runas: root
-#
-#  ValidateService:
-#    - location: health.sh
-#      timeout: 90
-#      runas: root
+
+  ApplicationStart:
+    - location: start.sh
+      timeout: 90
+      runas: ubuntu
+
+  ValidateService:
+    - location: health.sh
+      timeout: 90
+      runas: ubuntu
