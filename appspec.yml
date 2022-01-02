@@ -20,15 +20,15 @@ hooks:
 ##
   AfterInstall:
     - location: stop.sh
-      timeout: 90
-      runas: ubuntu
+      timeout: 60
+      runas: root
 
   ApplicationStart:
     - location: start.sh
-      timeout: 90
-      runas: ubuntu
+      timeout: 60
+      runas: root
 
   ValidateService:
     - location: health.sh
-      timeout: 90
-      runas: ubuntu
+      timeout: 60
+      runas: root

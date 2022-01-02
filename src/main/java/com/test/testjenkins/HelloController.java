@@ -13,23 +13,22 @@ import java.util.List;
 public class HelloController {
     private final Environment env;
 
-    @GetMapping("/profile")
-    public String profile(){
-        List<String> profiles = Arrays.asList(env.getActiveProfiles());
+    @GetMapping("/")
+    public String gyunny() {
+        List<String> profile = Arrays.asList(env.getActiveProfiles());
         List<String> realProfiles = Arrays.asList("real1", "real2");
+        String defaultProfile = profile.isEmpty() ? "default" : profile.get(0);
 
-        String defaultProfile = profiles.isEmpty() ? "default" : profiles.get(0);
-
-        return profiles.stream()
+        return profile.stream()
                 .filter(realProfiles::contains)
                 .findAny()
                 .orElse(defaultProfile);
     }
 
 
-    @GetMapping("/")
-    public String sayHello() {
-        return "travis + s3 + codeDeploy + nginx";
-    }
+//    @GetMapping("/")
+//    public String sayHello() {
+//        return "travis + s3 + codeDeploy + nginx";
+//    }
 
 }
