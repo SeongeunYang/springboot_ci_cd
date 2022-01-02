@@ -1,5 +1,5 @@
 #!/bin/bash
-REPOSITORY=/home/ubuntu/app
+REPOSITORY=/home/ubuntu/app/step2
 PROJECT_NAME=springboot_ci_cd
 
 echo "> Build 파일 복사"

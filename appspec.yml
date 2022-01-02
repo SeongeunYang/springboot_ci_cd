@@ -8,27 +8,27 @@ files:
 
 permissions:
   - object: /
-      pattern: "**"
-      owner: ec2-user
-      group: ec2-user
+    pattern: "**"
+    owner: ubuntu
+    group: ubuntu
 
 hooks:
-#  ApplicationStart:
-#    - location: deploy.sh
-#        timeout: 90
-#        runas: ec2-user
-
-  AfterInstall:
-    - location: stop.sh
-      timeout: 90
-      runas: root
-
   ApplicationStart:
-    - location: start.sh
+    - location: deploy.sh
       timeout: 90
-      runas: root
-
-  ValidateService:
-    - location: health.sh
-      timeout: 90
-      runas: root
+      runas: ubuntu
+#
+#  AfterInstall:
+#    - location: stop.sh
+#      timeout: 90
+#      runas: root
+#
+#  ApplicationStart:
+#    - location: start.sh
+#      timeout: 90
+#      runas: root
+#
+#  ValidateService:
+#    - location: health.sh
+#      timeout: 90
+#      runas: root
